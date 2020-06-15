@@ -9,3 +9,20 @@ before_install:
 script:
     - docker run -e CI=true armandoalorro/docker-frontend npm run test
 
+deploy:
+    provide: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-frontend"
+    env: "docker-frontend-env"
+    bucket_name: "elasticbeanstalk-us-east-2-328747554677"
+    bucket_path: "docker-frontend"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+    
+
+
+
+
