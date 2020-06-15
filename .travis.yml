@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t armandoalorro/docker-frontend -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true armandoalorro/docker-frontend npm run test
+
